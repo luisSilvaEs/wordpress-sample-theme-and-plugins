@@ -1,30 +1,45 @@
 # docker-compose.yml
 ---
-version: '3.7'
+version: '3.7' 
 services:
-  db:
-    image: mysql:8.0.19
+  db: #First service, a MySQL DB
+    image: mysql:8.0.19 #Here we tell Docker we want this specific version
     command: '--default-authentication-plugin=mysql_native_password'
+    volumes: #Here are bind the MySQL volumes from Docker to a location in our local environment to the end to be set for us
+      - type: volume
+        source: db_data
+        target: /var/lib/mysql
+      - type: bind
+        source: ./etc/mysql/docker-entrypoint-initdb.d
+        target: /docker-entrypoint-initdb.d
     restart: always
-    volumes:
-    - db_data:/var/lib/mysql
-    restart: always
-    environment:
+    environment: #These docker variables are mandatory to rise the MySQL service but the values can be defined for us 
       - MYSQL_ROOT_PASSWORD=somewordpress
       - MYSQL_DATABASE=wordpress
       - MYSQL_USER=wordpress
       - MYSQL_PASSWORD=wordpress
-  wordpress:
+  wordpress: #Second service: Wordpress
     depends_on:
       - db
-    image: wordpress:latest
+    image: wordpress:latest #Here we tell Docker we want the latest version published
     ports:
       - 8084:80
     restart: always
-    environment:
+    volumes: #Here are bind the Wordpress volumes from Docker to a location in our local environment to the end to be set for us
+      - type: volume
+        source: wordpress_home
+        target: /var/www/html
+
+      - type: bind
+        source: ./etc/wordpress/languages
+        target: /var/www/html/wp-content/languages
+
+    environment: #These docker variables are mandatory to rise the Wordpress service but the values can be defined for us (except the first one) 
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
 volumes:
   db_data:
+  wordpress_home: {}
+#NOTE ABOUT SERVICES VERSIONS, here are used the version defined in the official Docker page for Wordpress (20.01.2021)
