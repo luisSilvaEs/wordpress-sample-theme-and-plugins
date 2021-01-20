@@ -1,26 +1,48 @@
-# ABOUT this repo
+# ABOUT this repository
 
-## This repo contains:
-
-- A Docker image with a Wordpress environment ready to be deployed
-
-## How to install docker initially
-This step is not necessary when pull project from git
-
-IMPORTANT, there are 2 ways to install Wordpress using docker:
+BACKGROUND: There are 2 ways to install Wordpress using docker:
 
 - Execute the following command:
 ` docker pull wordpress `
 
 or 
 
-- Using a docker-compose file, which is the procedure we use for this repo. It consists in the following:
+- Using a docker-compose file, which is the procedure we use for this repo.
 
- * Create an empty docker-compose.yml file inside the folder, on it we will copy and paste the content from this repo [Sample docker file](https://github.com/docker/awesome-compose/blob/master/wordpress-mysql/docker-compose.yaml)
- IN case an error related to the 80 port indicating it is already in use, just change port number in the line 22 to 8086, 8088 or another available
- * Execute in terminal the following line: `docker-compose up -d`
+## I'm in a hurry, how to use this repo?
+- Clone ` git@github.com:luisSilvaBase22/wordpress-sample-theme-and-plugins.git ` 
+- Open a Terminal and navigate to the folder where you had clone the repo
+- Run this command ` docker-compose up `
+- Open a browser and navigate to http://localhost:8084/
+- Configure your WP environment as follow
+    * ![Image](screen-lang.png "icon")
+    * ![Image](screen-register.png "icon")
+    Use any user, any password and any email you want
+
+    * ![Image](screen-success.png "icon")
+    * ![Image](screen-login.png "icon")
+    Use the user and password you just created
+
+
+## This repo contains:
+
+- A Docker image with a Wordpress environment ready to be deployed
+- The environment is set using a docker compose file which contains 2 main services:
+    * MySQL database
+    * Wordpress
+The Wordpress service is dependent from the MySQL DataBase and such dependency is explicitly  set in the docker compose file.
+
+Inside the docker file you will find comments about what does each line of code
+
+## How to install docker initially (this step is not necessary if you clone this repo)
+
+ * Create an empty docker-compose.yml file inside the folder
+   ** IN case an error related to the 80 port indicating it is already in use, just change port number in the line 22 to 8086, 8088 or another available
+   ** The folder /etc along with all of its content must be created explicitly 
+ * ONCE the docker compose file is set and the etc folder is created, execute in terminal the following line: `docker-compose up -d`
  * After executing the previous command, you should see indicated in the terminal or in the Docker dashboard the 2 volumes as done (Terminal) or in green color (Dasdboard) ![Image](volumes-installed.png "icon")
- * Finally, open your browser and go to the following URL: localhost:80 to the Wordpress app running
+ * Finally, open your browser and visit the following URL: localhost:80 to the Wordpress app running
 
 ##### Reference
-[Docker image](https://hub.docker.com/_/wordpress)
+* [Docker image](https://hub.docker.com/_/wordpress)
+* [Sample docker file](https://github.com/docker/awesome-compose/blob/master/wordpress-mysql/docker-compose.yaml)
