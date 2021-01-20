@@ -15,13 +15,10 @@ or
 - Run this command ` docker-compose up `
 - Open a browser and navigate to http://localhost:8084/
 - Configure your WP environment as follow
-    * ![Image](screen-lang.png "icon")
-    * ![Image](screen-register.png "icon")
-    Use any user, any password and any email you want
-
-    * ![Image](screen-success.png "icon")
-    * ![Image](screen-login.png "icon")
-    Use the user and password you just created
+    1. Pick up a language ![Image](screen-lang.png "icon")
+    2. Use any user, any password and any email you want ![Image](screen-register.png "icon")
+    3. The registration was done successfully ![Image](screen-success.png "icon")
+    4. Use the user and password defined in step 2 ![Image](screen-login.png "icon")
 
 
 ## This repo contains:
@@ -46,3 +43,4 @@ Inside the docker file you will find comments about what does each line of code
 ##### Reference
 * [Docker image](https://hub.docker.com/_/wordpress)
 * [Sample docker file](https://github.com/docker/awesome-compose/blob/master/wordpress-mysql/docker-compose.yaml)
+* [Video used as reference](https://www.youtube.com/watch?v=pYhLEV-sRpY)
