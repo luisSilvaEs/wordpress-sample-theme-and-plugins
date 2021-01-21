@@ -21,11 +21,13 @@ or
     4. Use the user and password defined in step 2 ![Image](screen-login.png "icon")
 
 ## Basic docker commands
-NOTE if there are more than one development environment running, the following commands will affect all exiting environments
+NOTE if there are more than one development environment running, the following commands will affect them all
 - Start environment ` docker-compose up `
 - Shut down environment ` docker-compose down `
 - You can always use Ctrl C to stop the process though
+
 The following commands can be used when switching among branches to apply cleaner changes but warning, the inconvenient is that images and documents uploaded in the environment will disappear
+
 - Clean volumes ` docker volume prune `
 - Clean containers ` docker container prune `
 - See more instructions ` docker-compose h `
