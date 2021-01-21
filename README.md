@@ -9,7 +9,7 @@ or
 
 - Using a docker-compose file, which is the procedure we use for this repo.
 
-## I'm in a hurry, how to use this repo?
+## I'm in a hurry, how to use this repo
 - Clone ` git@github.com:luisSilvaBase22/wordpress-sample-theme-and-plugins.git ` 
 - Open a Terminal and navigate to the folder where you had clone the repo
 - Run this command ` docker-compose up `
@@ -19,6 +19,16 @@ or
     2. Use any user, any password and any email you want ![Image](screen-register.png "icon")
     3. The registration was done successfully ![Image](screen-success.png "icon")
     4. Use the user and password defined in step 2 ![Image](screen-login.png "icon")
+
+## Basic docker commands
+NOTE if there are more than one development environment running, the following commands will affect all exiting environments
+- Start environment ` docker-compose up `
+- Shut down environment ` docker-compose down `
+- You can always use Ctrl C to stop the process though
+The following commands can be used when switching among branches to apply cleaner changes but warning, the inconvenient is that images and documents uploaded in the environment will disappear
+- Clean volumes ` docker volume prune `
+- Clean containers ` docker container prune `
+- See more instructions ` docker-compose h `
 
 
 ## This repo contains:
